@@ -1,52 +1,75 @@
-# a199-flutter-expert-project
+# Ditonton App
 
-Repository ini merupakan starter project submission kelas Flutter Expert Dicoding Indonesia.
+This is a movie and TV series catalog application built with Flutter.
+It allows users to browse popular, now playing/on the air, and top-rated movies and TV series. Users can also view details for each movie/TV series and manage a watchlist.
 
----
+## Features
 
-## Tips Submission Awal
+-   Browse Now Playing Movies
+-   Browse Popular Movies
+-   Browse Top Rated Movies
+-   Browse On The Air TV Series
+-   Browse Popular TV Series
+-   Browse Top Rated TV Series
+-   View Movie Details
+-   View TV Series Details
+-   Add/Remove Movies to Watchlist
+-   Add/Remove TV Series to Watchlist
+-   Search Movies
+-   Search TV Series
 
-Pastikan untuk memeriksa kembali seluruh hasil testing pada submissionmu sebelum dikirimkan. Karena kriteria pada submission ini akan diperiksa setelah seluruh berkas testing berhasil dijalankan.
+## Architecture
 
+This application is built following the principles of **Clean Architecture**.
+The project is structured into distinct layers:
 
-## Tips Submission Akhir
+-   **Domain Layer**: Contains core business logic, entities, and use cases. It is independent of any framework or platform.
+-   **Data Layer**: Implements the interfaces defined in the Domain layer. It handles data retrieval from remote sources (APIs) and local sources (database), and data mapping.
+-   **Presentation Layer**: Handles the UI and presentation logic. It depends on the Domain layer for business rules and the Data layer for data.
 
-Jika kamu menerapkan modular pada project, Anda dapat memanfaatkan berkas `test.sh` pada repository ini. Berkas tersebut dapat mempermudah proses testing melalui *terminal* atau *command prompt*. Sebelumnya menjalankan berkas tersebut, ikuti beberapa langkah berikut:
-1. Install terlebih dahulu aplikasi sesuai dengan Operating System (OS) yang Anda gunakan.
-    - Bagi pengguna **Linux**, jalankan perintah berikut pada terminal.
-        ```
-        sudo apt-get update -qq -y
-        sudo apt-get install lcov -y
-        ```
-    
-    - Bagi pengguna **Mac**, jalankan perintah berikut pada terminal.
-        ```
-        brew install lcov
-        ```
-    - Bagi pengguna **Windows**, ikuti langkah berikut.
-        - Install [Chocolatey](https://chocolatey.org/install) pada komputermu.
-        - Setelah berhasil, install [lcov](https://community.chocolatey.org/packages/lcov) dengan menjalankan perintah berikut.
-            ```
-            choco install lcov
-            ```
-        - Kemudian cek **Environtment Variabel** pada kolom **System variabels** terdapat variabel GENTHTML dan LCOV_HOME. Jika tidak tersedia, Anda bisa menambahkan variabel baru dengan nilai seperti berikut.
-            | Variable | Value|
-            | ----------- | ----------- |
-            | GENTHTML | C:\ProgramData\chocolatey\lib\lcov\tools\bin\genhtml |
-            | LCOV_HOME | C:\ProgramData\chocolatey\lib\lcov\tools |
-        
-2. Untuk mempermudah proses verifikasi testing, jalankan perintah berikut.
+This separation of concerns ensures:
+-   **Independence of Frameworks**: The core business logic does not depend on Flutter, UI, or databases.
+-   **Testability**: Each layer can be tested independently.
+-   **Maintainability**: Changes in one layer have minimal impact on other layers.
+
+## Getting Started
+
+To run this project locally:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository_url>
     ```
-    git init
+2.  **Navigate to the project directory:**
+    ```bash
+    cd ditonton_app
     ```
-3. Kemudian jalankan berkas `test.sh` dengan perintah berikut pada *terminal* atau *powershell*.
+3.  **Install dependencies:**
+    ```bash
+    flutter pub get
     ```
-    test.sh
+4.  **Run the app:**
+    ```bash
+    flutter run
     ```
-    atau
-    ```
-    ./test.sh
-    ```
-    Proses ini akan men-*generate* berkas `lcov.info` dan folder `coverage` terkait dengan laporan coverage.
-4. Tunggu proses testing selesai hingga muncul web terkait laporan coverage.
 
+## API Key
+
+This application uses The Movie Database (TMDB) API. You need to obtain an API key from [TMDB](https://www.themoviedb.org/documentation/api) and place it in a `.env` file at the project root:
+
+```
+API_KEY=YOUR_TMDB_API_KEY
+BASE_URL=https://api.themoviedb.org/3
+BASE_IMAGE_URL=https://image.tmdb.org/t/p/w500
+```
+
+## Testing
+
+To run all tests and generate coverage report:
+
+```bash
+flutter test --coverage
+genhtml coverage/lcov.info -o coverage/html
+```
+
+Open `coverage/html/index.html` in your browser to view the coverage report.
