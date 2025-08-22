@@ -32,27 +32,6 @@ This separation of concerns ensures:
 -   **Testability**: Each layer can be tested independently.
 -   **Maintainability**: Changes in one layer have minimal impact on other layers.
 
-## Getting Started
-
-To run this project locally:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository_url>
-    ```
-2.  **Navigate to the project directory:**
-    ```bash
-    cd ditonton_app
-    ```
-3.  **Install dependencies:**
-    ```bash
-    flutter pub get
-    ```
-4.  **Run the app:**
-    ```bash
-    flutter run
-    ```
-
 ## API Key
 
 This application uses The Movie Database (TMDB) API. You need to obtain an API key from [TMDB](https://www.themoviedb.org/documentation/api) and place it in a `.env` file at the project root:
