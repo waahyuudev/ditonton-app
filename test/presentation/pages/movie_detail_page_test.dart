@@ -1,7 +1,8 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/presentation/pages/movie_detail_page.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
+import 'package:core/utils/state_enum.dart';
+import 'package:core/domain/entities/movie.dart';
+import 'package:core/presentation/pages/movie_detail_page.dart';
+import 'package:core/presentation/provider/movie_detail_notifier.dart';
+// ...existing code...
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -21,7 +22,7 @@ void main() {
 
   Widget _makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<MovieDetailNotifier>.value(
-      value: mockNotifier,
+      value: mockNotifier as MovieDetailNotifier,
       child: MaterialApp(
         home: body,
       ),

@@ -1,7 +1,8 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_series.dart';
-import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
-import 'package:ditonton/presentation/provider/top_rated_tv_series_notifier.dart';
+import 'package:core/utils/state_enum.dart';
+import 'package:core/domain/entities/tv_series.dart';
+import 'package:core/presentation/pages/top_rated_tv_series_page.dart';
+import 'package:core/presentation/provider/top_rated_tv_series_notifier.dart';
+// ...existing code...
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -20,7 +21,7 @@ void main() {
 
   Widget _makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<TopRatedTvSeriesNotifier>.value(
-      value: mockNotifier,
+      value: mockNotifier as TopRatedTvSeriesNotifier,
       child: MaterialApp(
         home: body,
       ),
